@@ -28,6 +28,8 @@ proc happy_num {num args} {
 		lappend calc_list $calc_num
 		set calc_num [calc_sq_sum $calc_num]
 	}
+	# Adding the last calculate number
+	lappend calc_list $calc_num
 	
 	# Return true is the loop quit and the calculated number is 1
 	# Other wise we are going in a loop with the calculation
@@ -61,15 +63,15 @@ puts "The first 8 happy numbers are: $happy_list"
 
 set num 1
 while {$num} {
-	set list {}
+	set lst {}
 	
 	puts -nonewline "\n\nEnter a number to check if it is happy \[Enter 0 to exit\]: "
 	flush stdout
 	gets stdin num
 	
-	if {[happy_num $num list]} {
-		puts "Your number $num is a happy number, with calculations: $list"
+	if {[happy_num $num lst]} {
+		puts "Your number $num is a happy number, with calculations: $lst"
 	} else {
-		puts "Sadly! Your number $num is not happy, with calculations: $list"
+		puts "Sadly! Your number $num is not happy, with calculations: $lst"
 	}
 }
